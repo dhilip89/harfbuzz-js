@@ -56,6 +56,9 @@ hb_font_funcs_set_glyph_extents_func
 hb_font_funcs_set_glyph_contour_point_func
 hb_font_funcs_set_glyph_name_func
 hb_font_funcs_set_glyph_from_name_func
+hb_ot_font_set_funcs
+hb_face_get_glyph_count
+hb_font_get_glyph_name
 
 # Unicode stuff
 ucdn_get_unicode_version

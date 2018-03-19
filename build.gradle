@@ -180,7 +180,7 @@ tasks.withType(CompileEmcc) {
 	memoryInitFile = false
 	reservedFunctionPointers = 1024
 	totalMemory = 64 * 1024 * 1024
-	optimizationLevel = 2
+	optimizationLevel = 1
 	exportedFunctions = EXPORTED_FUNCTIONS
 	deadFunctions = DEAD_FUNCTIONS
 	outputFile = file("${buildDir}/emcc/harfbuzz${type}.js")
@@ -326,6 +326,7 @@ class CompileEmcc extends SourceTask {
 
 		if (preJs != null) commandLine.addAll "--pre-js", preJs
 		if (postJs != null) commandLine.addAll "--post-js", postJs
+		commandLine.addAll "--post-js", "api.js"
 		commandLine.addAll "--post-js", versionHeader
 
 
