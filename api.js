@@ -18,7 +18,9 @@ var harfbuzz = (function() {
           Module._hb_ot_font_set_funcs(hbFont);
           Module._hb_font_set_scale(hbFont, size, size);
           
-          var otFont = opentype.parse(fontFileBuffer);
+          var otFont;
+          if(global.opentype)
+            otFont= opentype.parse(fontFileBuffer);
           
           cb({hb:hbFont, ot:otFont});
         });
@@ -62,6 +64,9 @@ var harfbuzz = (function() {
   }
 
   function shaped(font, text, size, x, y) {
+    if(font.ot === undefined)
+      throw new "Cannot shape text without opentype library"
+    
     size = size || 64;
     x = x || 0;
     y = y || 0;
